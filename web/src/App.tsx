@@ -9,7 +9,7 @@ export default function App(){
     useEffect(() => {
 
         // fetch('https://z5d5c6sftd.execute-api.us-east-2.amazonaws.com/default')
-        fetch('https://8wxko44cl7.execute-api.us-east-2.amazonaws.com/default/handler')
+        fetch('https://2dh9rhdhy0.execute-api.us-east-2.amazonaws.com/default')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching data:', error));
@@ -17,13 +17,7 @@ export default function App(){
 
     return (
       <div>
-        {data && data.body && data.body.length > 0 ? (
-          <ul>
-            {data.body}
-          </ul>
-        ) : (
-          <p>Loading...</p>
-        )}
+        {data.result}
       </div>
     );
 }

@@ -34,8 +34,8 @@ pkgs.mkShell {
       echo "Creating a virtual environment for the project..."
       poetry config virtualenvs.in-project true
     fi
-    #make terraform.init
-    #export $(terraform -chdir=infra output -json | jq -r 'to_entries|map("\(.key | ascii_upcase)=\(.value.value)")|.[]' | xargs)
-    #aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+    make terraform.init
+    export $(terraform -chdir=terraform output -json | jq -r 'to_entries|map("\(.key | ascii_upcase)=\(.value.value)")|.[]' | xargs)
+    aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   '';
 }
